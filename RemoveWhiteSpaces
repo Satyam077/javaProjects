@@ -1,0 +1,21 @@
+# javaProjects
+#My Java projects by Anudip Foundation
+
+package JavaCollectionsProjects;
+
+public class RemoveSpaces {
+	static void RemoveWhiteSpaces(String s)
+	{
+//		reasign value of to s Object - because String are immutable
+		s=s.replaceAll(" ",""); //removing all spaces of String
+//		printing string ater removing aal spaces
+		System.out.println("String is : "+s);
+	}
+//	main method begins 
+	public static void main(String[] args) {
+//		calling method RemoveWhiteSpaces
+		RemoveWhiteSpaces("this   is text ");
+
+	}
+
+}
