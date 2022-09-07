@@ -1,0 +1,55 @@
+package lab;
+import java.util.Scanner;
+
+public class LargestAndSmallestWord {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Sentence:");
+		String string=sc.nextLine();
+		String word = ""; 
+		String smallest="";
+		String largest="";
+		String[] words =new String [50]; 
+		int length=0;
+		
+		string=string+ " ";
+		
+		 for(int i = 0; i < string.length(); i++){  
+	            
+			 
+	            if(string.charAt(i) != ' '){  
+	                word = word + string.charAt(i);  
+	            }  
+	            else{  
+	                
+	                words[length] = word;  
+	                
+	                length++;  
+	                
+	                word = "";  
+	            }  
+	        }  
+		  smallest = largest = words[0];  
+          
+	       
+	        for(int k = 0; k < length; k++){  
+	              
+	             
+	            
+	            if(smallest.length() > words[k].length())  
+	                smallest = words[k];  
+	   
+	          
+	            if(largest.length() < words[k].length())  
+	                largest = words[k];  
+	        }  
+	          
+	        System.out.println("Smallest word: " + smallest);  
+	        System.out.println("Largest word: " + largest);  
+		
+				
+
+	}
+
+}
