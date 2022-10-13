@@ -1,0 +1,157 @@
+Ans 1.....
+
+// (a).Table name--jobs
+
+ create table jobs(job_id int,job_title varchar(50), min_salary int , max_salary int);
+
+mysql> desc jobs;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| job_id     | int         | YES  |     | NULL    |       |
+| job_title  | varchar(50) | YES  |     | NULL    |       |
+| min_salary | mediumtext  | YES  |     | NULL    |       |
+| max_salary | mediumtext  | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+
+//(b).Table name--Countries
+
+create table countries(country_id int,country_name varchar(50),name enum('Italy','India','China'),region_id int);
+
+mysql> desc countries;
++--------------+-------------------------------+------+-----+---------+-------+
+| Field        | Type                          | Null | Key | Default | Extra |
++--------------+-------------------------------+------+-----+---------+-------+
+| country_id   | int                           | YES  |     | NULL    |       |
+| country_name | varchar(50)                   | YES  |     | NULL    |       |
+| name         | enum('Italy','India','China') | YES  |     | NULL    |       |
+| region_id    | int                           | YES  |     | NULL    |       |
++--------------+-------------------------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+
+
+//(c).Table name--job_history
+
+create table job_history(employee_id int unique, start_date DATE,end_date DATE,jod_id long primary key ,Department_id int);
+
+mysql> desc job_history;
++---------------+------------+------+-----+---------+-------+
+| Field         | Type       | Null | Key | Default | Extra |
++---------------+------------+------+-----+---------+-------+
+| employee_id   | int        | YES  | UNI | NULL    |       |
+| start_date    | date       | YES  |     | NULL    |       |
+| end_date      | date       | YES  |     | NULL    |       |
+| jod_id        | mediumtext | YES  |     | NULL    |       |
+| Department_id | int        | YES  |     | NULL    |       |
++---------------+------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+
+
+
+Ans 2....
+
+//(a).Alter Foreign key
+
+ ALTER TABLE job_history ADD CONSTRAINT fk_job_id FOREIGN KEY ( job_Id ) REFERENCES jobs ( job_id ) ON DELETE CASCADE ON UPDATE RESTRICT;
+
+
+
+//(b).Alter table name countries to country_name
+
+Alter table countries rename to country_new;
+
+
+desc country_new;
++--------------+-------------------------------+------+-----+---------+-------+
+| Field        | Type                          | Null | Key | Default | Extra |
++--------------+-------------------------------+------+-----+---------+-------+
+| con_id       | int                           | YES  |     | NULL    |       |
+| country_name | varchar(50)                   | YES  |     | NULL    |       |
+| name         | enum('Italy','India','China') | YES  |     | NULL    |       |
+| region_id    | int                           | YES  |     | NULL    |       |
++--------------+-------------------------------+------+-----+---------+-------+
+
+
+
+//(c).To change the name of the column country_id to con_id, 
+keeping the data type and size same.
+
+alter table country_new RENAME column country_id TO con_id;
+mysql> desc country_new;
+
++--------------+-------------------------------+------+-----+---------+-------+
+| Field        | Type                          | Null | Key | Default | Extra |
++--------------+-------------------------------+------+-----+---------+-------+
+| con_id       | int                           | YES  |     | NULL    |       |
+| country_name | varchar(50)                   | YES  |     | NULL    |       |
+| name         | enum('Italy','India','China') | YES  |     | NULL    |       |
+| region_id    | int                           | YES  |     | NULL    |       |
++--------------+-------------------------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+Ans 3....
+
+
+//(a). insert into country_new values(100,'Australia','Italy',88);
+insert into country_new values(100,'Australia','2',88);
+insert into country_new values(100,'Australia','3',88);
+
+ select *from country_new;
++--------+--------------+-------+-----------+
+| con_id | country_name | name  | region_id |
++--------+--------------+-------+-----------+
+|    100 | Australia    | Italy |        88 |
+|    100 | Australia    | India |        88 |
+|    100 | Australia    | China |        88 |
++--------+--------------+-------+-----------+
+3 rows in set (0.00 sec)
+
+
+(b).SQL statement to insert 5 rows by a single insert statement into jobs table.
+
+ insert into jobs values(100,'Software Trainee',25000,35000),(101,'Junior Software Trainee',20000,30000),(102,'Python Developer',45000,65000),
+(103,'DBA',45000,60000),(104,'Java Developer',60000,95000);
+
+
+mysql> select *from jobs;
++--------+-------------------------+------------+------------+
+| job_id | job_title               | min_salary | max_salary |
++--------+-------------------------+------------+------------+
+|    100 | Software Trainee        |      25000 |      35000 |
+|    101 | Junior Software Trainee |      20000 |      30000 |
+|    102 | Python Developer        |      45000 |      65000 |
+|    103 | DBA                     |      45000 |      60000 |
+|    104 | Java Developer          |      60000 |      95000 |
++--------+-------------------------+------------+------------+
+5 rows in set (0.00 sec)
+
+
+
+(c). A SQL statement to change Min_salary  to 8000 and max_Salary to 40000 for programmer
+
+
+mysql> update jobs set  min_salary = 46000 WHERE job_id = 102 AND max_salary = 60000;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select *from jobs;
++--------+-------------------------+------------+------------+
+| job_id | job_title               | min_salary | max_salary |
++--------+-------------------------+------------+------------+
+|    100 | Software Trainee        |      25000 |      35000 |
+|    101 | Junior Software Trainee |      20000 |      30000 |
+|    102 | Python Developer        |      45000 |      65000 |
+|    103 | DBA                     |      45000 |      60000 |
+|    104 | Java Developer          |      60000 |      95000 |
++--------+-------------------------+------------+------------+
+5 rows in set (0.00 sec)
+
+
+
+
+
