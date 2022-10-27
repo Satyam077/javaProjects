@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN">
+
+-<hibernate-mapping>
+
+
+-<class table="Student" name="com.Student_Mgt.Student">
+
+<meta attribute="class-description">This class contains the employee detail. </meta>
+
+
+-<id name="st_id" column="st_id" type="int">
+
+<generator class="increment"/>
+
+</id>
+
+<property name="sname" column="sname" type="string"/>
+
+<property name="contact" column="contact" type="string"/>
+
+</class>
+
+</hibernate-mapping>
