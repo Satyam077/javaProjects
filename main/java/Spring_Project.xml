@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+               
+    <!-- Book  beans -->  
+        
+               
+       <bean id="Bookbean1" class="com.spring.Spring_Project.Book">
+       <constructor-arg name="bname" value="Java"> </constructor-arg>
+       <constructor-arg name="bid" value="1" ></constructor-arg>
+       <constructor-arg name="price" value="205"></constructor-arg>
+       </bean>
+       
+       <bean id="Bookbean2" class="com.spring.Spring_Project.Book">
+       <constructor-arg name="bname" value="C++"> </constructor-arg>
+       <constructor-arg name="bid" value="2" ></constructor-arg>
+       <constructor-arg name="price" value="200"></constructor-arg>
+       </bean>
+       
+       <bean id="Bookbean3" class="com.spring.Spring_Project.Book">
+       <constructor-arg name="bname" value="C"> </constructor-arg>
+       <constructor-arg name="bid" value="3" ></constructor-arg>
+       <constructor-arg name="price" value="250"></constructor-arg>
+       </bean>
+       
+       <bean id="Bookbean4" class="com.spring.Spring_Project.Book">
+       <constructor-arg name="bname" value="Data Structures"> </constructor-arg>
+       <constructor-arg name="bid" value="4" ></constructor-arg>
+       <constructor-arg name="price" value="350"></constructor-arg>
+       </bean>
+       
+       
+     <!-- Address   beans -->
+     
+     
+     <bean id="Add1" class="com.spring.Spring_Project.Address">
+     <property name="hno" value="95"/>
+     <property name="area" value="Beta-1"/>
+     <property name="city" value="Noida"/>
+     </bean>
+     
+     
+     <bean id="Add2" class="com.spring.Spring_Project.Address">
+     <property name="hno" value="96"/>
+     <property name="area" value="Alpha-1"/>
+     <property name="city" value="Gr Noida"/>
+     </bean>
+     
+     
+     
+     <!-- Student beans -->
+     
+     
+     <bean id="Studentbean1" class="com.spring.Spring_Project.Student">
+     <property name="sid" value="101"/>
+     <property name="sname" value="Sonu"/>
+     <property name="blist">
+     
+       <list>
+            <ref bean="Bookbean1"/>
+            <ref bean="Bookbean2"/>
+     
+        </list>
+     </property>
+     
+     <property name="Address" ref="Add1"/>
+     
+     </bean>
+     
+     
+     <bean id="Studentbean2" class="com.spring.Spring_Project.Student">
+     <property name="sid" value="102"/>
+     <property name="sname" value="Raman"/>
+     <property name="blist">
+     
+       <list>
+            <ref bean="Bookbean3"/>
+            <ref bean="Bookbean4"/>
+     
+        </list>
+     </property>
+     <property name="Address" ref="Add2"/>
+     </bean>
+     
+     
+     
+    
+               
+               
+               
+               
+               
+                 
+  </beans>
