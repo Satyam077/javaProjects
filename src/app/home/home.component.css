@@ -1,0 +1,15 @@
+.nav{
+text-align: center;
+display: flex;
+}
+.nav ul:hover{
+    background-color: aqua;
+    transition: 0.4s;
+}
+.nav:ul{
+    color: white;
+    text-decoration: none;
+    padding: 10px 10px;
+    margin: 1px;
+    font-size: 30px;
+}
